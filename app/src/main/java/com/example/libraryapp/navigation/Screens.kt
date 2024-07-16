@@ -1,4 +1,4 @@
-package com.example.libraryapp.auth.navigation
+package com.example.libraryapp.navigation
 
 sealed class Screens(val route: String) {
 

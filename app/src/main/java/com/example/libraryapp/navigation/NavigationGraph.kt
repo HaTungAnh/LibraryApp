@@ -1,4 +1,4 @@
-package com.example.libraryapp.auth.navigation
+package com.example.libraryapp.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
