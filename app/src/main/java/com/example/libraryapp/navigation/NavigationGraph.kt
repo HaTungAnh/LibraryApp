@@ -23,7 +23,7 @@ fun NavigationGraph(
             RegisterScreen(navController = navController)
         }
         composable(route = Screens.NavigationAppBar.route) {
-            NavigationAppBar(navController = navController)
+            NavigationAppBar()
         }
     }
 }
