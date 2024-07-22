@@ -22,5 +22,8 @@ fun NavigationGraph(
         composable(route = Screens.RegisterScreen.route) {
             RegisterScreen(navController = navController)
         }
+        composable(route = Screens.NavigationAppBar.route) {
+            NavigationAppBar(navController = navController)
+        }
     }
 }
