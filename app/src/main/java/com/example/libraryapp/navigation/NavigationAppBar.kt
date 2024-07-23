@@ -1,6 +1,8 @@
 package com.example.libraryapp.navigation
 
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Bookmark
@@ -22,7 +24,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -61,12 +66,22 @@ fun NavigationAppBar(
                 colors = TopAppBarDefaults.topAppBarColors(
                     containerColor = lightOrangeColor,
                     titleContentColor = redOrangeColor
-                )
+                ),
+                modifier = Modifier
+                    .border(1.dp, color = redOrangeColor, shape = RoundedCornerShape(
+                        bottomStart = 20.dp,
+                        bottomEnd = 20.dp
+                    ))
             )
         },
         bottomBar = {
             BottomAppBar(
-                containerColor = lightOrangeColor
+                containerColor = lightOrangeColor,
+                modifier = Modifier
+                    .border(1.dp, color = redOrangeColor, shape = RoundedCornerShape(
+                        topStart = 20.dp,
+                        topEnd = 20.dp
+                    ))
             ) {
                 IconButton(
                     onClick = {
@@ -86,6 +101,7 @@ fun NavigationAppBar(
                     )
                 }
 
+                // TODO: Fix Icons always filled
                 IconButton(
                     onClick = {
                         selected.value = Icons.Default.Bookmark
@@ -103,6 +119,7 @@ fun NavigationAppBar(
                     )
                 }
 
+                // TODO: Fix Icons can't filled
                 IconButton(
                     onClick = {
                         selected.value = Icons.Default.Search
@@ -158,4 +175,10 @@ fun NavigationAppBar(
             }
         }
     }
+}
+
+@Preview
+@Composable
+private fun PreviewNavigationAppBar() {
+    NavigationAppBar()
 }
