@@ -21,12 +21,11 @@ import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -53,7 +52,6 @@ import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
     viewModel: LoginViewModel = hiltViewModel(),
@@ -102,10 +100,12 @@ fun LoginScreen(
             label = { Text( text = "Email Address", fontFamily = montserratFontFamily, fontWeight = FontWeight.SemiBold) },
             leadingIcon = { Icon(imageVector = Icons.Outlined.Email, contentDescription = null) },
             shape = RoundedCornerShape(15.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.White,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White,
+                focusedBorderColor = Color.Black,
                 unfocusedBorderColor = Color.Black,
-                focusedBorderColor = Color.Black
             )
         )
 
@@ -120,10 +120,12 @@ fun LoginScreen(
             label = { Text( text = "Password", fontFamily = montserratFontFamily, fontWeight = FontWeight.SemiBold) },
             leadingIcon = { Icon(imageVector = Icons.Outlined.Lock, contentDescription = null) },
             shape = RoundedCornerShape(15.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.White,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White,
+                focusedBorderColor = Color.Black,
                 unfocusedBorderColor = Color.Black,
-                focusedBorderColor = Color.Black
             ),
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -165,15 +167,6 @@ fun LoginScreen(
             )
         }
 
-        /* Row(modifier = Modifier
-            .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            if (state.value?.isLoading == true) {
-                CircularProgressIndicator()
-            }
-        } */
-
         Spacer(modifier = Modifier.height(10.dp))
 
         Text(
@@ -184,7 +177,9 @@ fun LoginScreen(
             color = Color.Black,
             modifier = Modifier
                 .padding(start = 25.dp)
-                .clickable { /*TODO*/ }
+                .clickable {
+                    // TODO: Change Password
+                }
         )
 
         Spacer(modifier = Modifier.height(30.dp))
@@ -221,7 +216,9 @@ fun LoginScreen(
             scope.launch {
                 if (state.value?.isSuccess?.isNotEmpty() == true) {
                     val success = state.value?.isSuccess
-                    Toast.makeText(context, "$success", Toast.LENGTH_LONG).show()
+                    Toast
+                        .makeText(context, "$success", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
         }
@@ -230,7 +227,9 @@ fun LoginScreen(
             scope.launch {
                 if (state.value?.isError?.isNotEmpty() == true) {
                     val error = state.value?.isError
-                    Toast.makeText(context, "$error", Toast.LENGTH_LONG).show()
+                    Toast
+                        .makeText(context, "$error", Toast.LENGTH_LONG)
+                        .show()
                 }
             }
         }

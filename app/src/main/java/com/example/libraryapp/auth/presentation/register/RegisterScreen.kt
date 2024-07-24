@@ -22,12 +22,11 @@ import androidx.compose.material.icons.outlined.Email
 import androidx.compose.material.icons.outlined.Lock
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -54,7 +53,6 @@ import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor
 import kotlinx.coroutines.launch
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun RegisterScreen(
     viewModel: RegisterViewModel = hiltViewModel(),
@@ -118,10 +116,12 @@ fun RegisterScreen(
             },
             leadingIcon = { Icon(imageVector = Icons.Outlined.Email, contentDescription = null) },
             shape = RoundedCornerShape(15.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.White,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White,
+                focusedBorderColor = Color.Black,
                 unfocusedBorderColor = Color.Black,
-                focusedBorderColor = Color.Black
             )
         )
 
@@ -142,10 +142,12 @@ fun RegisterScreen(
             },
             leadingIcon = { Icon(imageVector = Icons.Outlined.Lock, contentDescription = null) },
             shape = RoundedCornerShape(15.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.White,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White,
+                focusedBorderColor = Color.Black,
                 unfocusedBorderColor = Color.Black,
-                focusedBorderColor = Color.Black
             ),
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -176,10 +178,12 @@ fun RegisterScreen(
             },
             leadingIcon = { Icon(imageVector = Icons.Outlined.Lock, contentDescription = null) },
             shape = RoundedCornerShape(15.dp),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                containerColor = Color.White,
+            colors = OutlinedTextFieldDefaults.colors(
+                focusedContainerColor = Color.White,
+                unfocusedContainerColor = Color.White,
+                disabledContainerColor = Color.White,
+                focusedBorderColor = Color.Black,
                 unfocusedBorderColor = Color.Black,
-                focusedBorderColor = Color.Black
             ),
             visualTransformation = if (passwordVisibility) VisualTransformation.None else PasswordVisualTransformation(),
             keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password),
@@ -227,15 +231,6 @@ fun RegisterScreen(
                 fontSize = 18.sp
             )
         }
-
-        /* Row(modifier = Modifier
-            .fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
-        ) {
-            if (state.value?.isLoading == true) {
-                CircularProgressIndicator()
-            }
-        } */
 
         LaunchedEffect(key1 = state.value?.isSuccess) {
             scope.launch {

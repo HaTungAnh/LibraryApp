@@ -3,7 +3,6 @@ package com.example.libraryapp.auth.presentation.register
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.libraryapp.auth.data.AuthRepository
-import com.example.libraryapp.auth.presentation.login.LoginState
 import com.example.libraryapp.auth.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -16,7 +15,7 @@ class RegisterViewModel @Inject constructor(
     private val repository: AuthRepository
 ) : ViewModel() {
 
-    val _registerState = Channel<RegisterState>()
+    private val _registerState = Channel<RegisterState>()
     val registerState = _registerState.receiveAsFlow()
 
     fun registerUser(email: String, password: String) = viewModelScope.launch {

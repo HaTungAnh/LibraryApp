@@ -12,6 +12,7 @@ import com.example.libraryapp.auth.presentation.register.RegisterScreen
 fun NavigationGraph(
     navController: NavHostController = rememberNavController()
 ) {
+
     NavHost(
         navController = navController,
         startDestination = Screens.LoginScreen.route
