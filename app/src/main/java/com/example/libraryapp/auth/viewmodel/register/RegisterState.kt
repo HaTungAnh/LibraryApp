@@ -1,4 +1,4 @@
-package com.example.libraryapp.auth.presentation.register
+package com.example.libraryapp.auth.viewmodel.register
 
 data class RegisterState(
 

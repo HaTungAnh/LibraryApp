@@ -1,4 +1,4 @@
-package com.example.libraryapp.auth.util
+package com.example.libraryapp.util
 
 sealed class Resource<T>(val data: T? = null, val message: String? = null) {
 

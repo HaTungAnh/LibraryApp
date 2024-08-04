@@ -1,6 +1,6 @@
-package com.example.libraryapp.auth.presentation.login
+package com.example.libraryapp.profile.viewmodel
 
-data class LoginState(
+data class ProfileState(
 
     val isLoading: Boolean = false,
     val isSuccess: String? = "",

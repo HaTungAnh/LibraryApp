@@ -1,9 +1,9 @@
-package com.example.libraryapp.auth.presentation.login
+package com.example.libraryapp.auth.viewmodel.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.libraryapp.auth.data.AuthRepository
-import com.example.libraryapp.auth.util.Resource
+import com.example.libraryapp.auth.viewmodel.AuthRepository
+import com.example.libraryapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.flow.receiveAsFlow
@@ -18,6 +18,9 @@ class LoginViewModel @Inject constructor(
     private val _loginState = Channel<LoginState>()
     val loginState = _loginState.receiveAsFlow()
 
+    private val _logoutState = Channel<LogoutState>()
+    val logoutState = _logoutState.receiveAsFlow()
+
     fun loginUser(email: String, password: String) = viewModelScope.launch {
         repository.loginUser(email, password).collect{ result ->
             when(result) {
@@ -31,6 +34,24 @@ class LoginViewModel @Inject constructor(
 
                 is Resource.Error -> {
                     _loginState.send(LoginState(isError = result.message))
+                }
+            }
+        }
+    }
+
+    fun logoutUser() = viewModelScope.launch {
+        repository.logoutUser().collect{ result ->
+            when(result) {
+                is Resource.Success -> {
+                    _logoutState.send(LogoutState(isSuccess = "Logout Successful"))
+                }
+
+                is Resource.Loading -> {
+                    _logoutState.send(LogoutState(isLoading = true))
+                }
+
+                is Resource.Error -> {
+                    _logoutState.send(LogoutState(isError = result.message))
                 }
             }
         }

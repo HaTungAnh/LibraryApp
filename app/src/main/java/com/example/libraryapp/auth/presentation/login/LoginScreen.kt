@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.example.libraryapp.auth.viewmodel.login.LoginViewModel
 import com.example.libraryapp.ui.theme.lightOrangeColor
 import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor
@@ -143,9 +144,9 @@ fun LoginScreen(
 
         Button(
             onClick = {
-                  scope.launch {
-                      viewModel.loginUser(email, password)
-                  }
+                scope.launch {
+                    viewModel.loginUser(email, password)
+                }
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_LONG).show()
                 navController.navigate("NavigationAppBar")
             },

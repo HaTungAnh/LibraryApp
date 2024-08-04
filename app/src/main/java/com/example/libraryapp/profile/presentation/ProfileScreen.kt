@@ -1,4 +1,4 @@
-package com.example.libraryapp.navigation
+package com.example.libraryapp.profile.presentation
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
@@ -21,6 +21,8 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,14 +32,24 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
+import com.example.libraryapp.auth.viewmodel.login.LoginViewModel
 import com.example.libraryapp.ui.theme.lightOrangeColor
 import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor
+import kotlinx.coroutines.launch
 
 @Composable
-fun ProfileScreen(modifier: Modifier = Modifier) {
+fun ProfileScreen(
+    modifier: Modifier = Modifier,
+    loginViewModel: LoginViewModel = hiltViewModel(),
+    navController: NavController
+) {
+
+    val scope = rememberCoroutineScope()
 
     Column(
         modifier = modifier
@@ -111,7 +123,28 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 
         Spacer(modifier = Modifier.height(40.dp))
 
-        Button(destination = "abc", title = "Logout", color = redOrangeColor)
+        OutlinedButton(
+            onClick = {
+                scope.launch {
+                    loginViewModel.logoutUser()
+                }
+                navController.navigate("LoginScreen")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(start = 16.dp, end = 16.dp),
+            shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(1.dp, color = redOrangeColor)
+        ) {
+            Text(
+                text = "Logout",
+                fontFamily = montserratFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp,
+                color = redOrangeColor
+            )
+        }
     }
 }
 
@@ -119,7 +152,7 @@ fun ProfileScreen(modifier: Modifier = Modifier) {
 fun Button(
     destination: String,
     title: String,
-    navController: NavHostController = rememberNavController(),
+    navController: NavController = rememberNavController(),
     color: Color = Color.Black
 ) {
     OutlinedButton(
@@ -141,10 +174,4 @@ fun Button(
             color = color
         )
     }
-}
-
-@Preview
-@Composable
-private fun PreviewProfileScreen() {
-    ProfileScreen()
 }

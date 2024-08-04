@@ -1,6 +1,7 @@
 package com.example.libraryapp.auth.data
 
-import com.example.libraryapp.auth.util.Resource
+import com.example.libraryapp.auth.viewmodel.AuthRepository
+import com.example.libraryapp.util.Resource
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.flow.Flow
@@ -30,6 +31,17 @@ class AuthRepositoryImpl @Inject constructor(
             emit(Resource.Success(result))
         }.catch {
             emit(Resource.Error(it.message.toString()))
+        }
+    }
+
+    override fun logoutUser(): Flow<Resource<Boolean>> {
+        return flow {
+            try {
+                firebaseAuth.signOut()
+                emit(Resource.Success(true))
+            } catch (e: Exception) {
+                emit(Resource.Error(e.message.toString()))
+            }
         }
     }
 }
