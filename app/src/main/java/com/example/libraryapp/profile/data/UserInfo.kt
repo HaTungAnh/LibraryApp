@@ -1,7 +1,8 @@
 package com.example.libraryapp.profile.data
 
 data class UserInfo(
-    val name: String,
+
+    val name: String? = null,
     val email: String,
-    val phoneNumber: String
+    val phone: String? = null
 )

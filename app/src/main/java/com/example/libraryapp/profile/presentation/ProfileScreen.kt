@@ -106,20 +106,94 @@ fun ProfileScreen(
 
         Spacer(modifier = Modifier.height(32.dp))
 
+        OutlinedButton(
+            onClick = {
+                navController.navigate("UpdateUserInfoScreen")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(start = 16.dp, end = 16.dp),
+            shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(1.dp, color = Color.Black)
+        ) {
+            Text(
+                text = "Edit Profile",
+                fontFamily = montserratFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp,
+                color = Color.Black
+            )
+        }
+
+        Spacer(modifier = Modifier.height(15.dp))
+
         // TODO: Change Destination
-        Button(destination = "abc", title = "Edit Profile")
+        OutlinedButton(
+            onClick = {
+
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(start = 16.dp, end = 16.dp),
+            shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(1.dp, color = Color.Black)
+        ) {
+            Text(
+                text = "Light Theme",
+                fontFamily = montserratFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp,
+                color = Color.Black
+            )
+        }
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        Button(destination = "abc", title = "Light Theme")
+        // TODO: Change Destination
+        OutlinedButton(
+            onClick = {
+
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(start = 16.dp, end = 16.dp),
+            shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(1.dp, color = Color.Black)
+        ) {
+            Text(
+                text = "Notifications",
+                fontFamily = montserratFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp,
+                color = Color.Black
+            )
+        }
 
         Spacer(modifier = Modifier.height(15.dp))
 
-        Button(destination = "abc", title = "Notifications")
+        // TODO: Change Destination
+        OutlinedButton(
+            onClick = {
 
-        Spacer(modifier = Modifier.height(15.dp))
-
-        Button(destination = "abc", title = "Help")
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(50.dp)
+                .padding(start = 16.dp, end = 16.dp),
+            shape = RoundedCornerShape(15.dp),
+            border = BorderStroke(1.dp, color = Color.Black)
+        ) {
+            Text(
+                text = "Help",
+                fontFamily = montserratFontFamily,
+                fontWeight = FontWeight.SemiBold,
+                fontSize = 20.sp,
+                color = Color.Black
+            )
+        }
 
         Spacer(modifier = Modifier.height(40.dp))
 
@@ -157,7 +231,7 @@ fun Button(
 ) {
     OutlinedButton(
         onClick = {
-            navController.navigate("Screens.$destination.route")
+            navController.navigate(destination)
         },
         modifier = Modifier
             .fillMaxWidth()
