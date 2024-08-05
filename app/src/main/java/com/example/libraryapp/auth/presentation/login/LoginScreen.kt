@@ -148,7 +148,7 @@ fun LoginScreen(
                     viewModel.loginUser(email, password)
                 }
                 Toast.makeText(context, "Login Successful", Toast.LENGTH_LONG).show()
-                navController.navigate("NavigationAppBar")
+                navController.navigate("HomeScreen")
             },
             modifier = Modifier
                 .fillMaxWidth()

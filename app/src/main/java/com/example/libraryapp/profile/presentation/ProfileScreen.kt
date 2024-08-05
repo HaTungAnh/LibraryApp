@@ -5,6 +5,7 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -46,7 +47,8 @@ import kotlinx.coroutines.launch
 fun ProfileScreen(
     modifier: Modifier = Modifier,
     loginViewModel: LoginViewModel = hiltViewModel(),
-    navController: NavController
+    navController: NavController,
+    paddingValues: PaddingValues
 ) {
 
     val scope = rememberCoroutineScope()
@@ -54,7 +56,8 @@ fun ProfileScreen(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .background(color = lightOrangeColor),
+            .background(color = lightOrangeColor)
+            .padding(paddingValues),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Box(

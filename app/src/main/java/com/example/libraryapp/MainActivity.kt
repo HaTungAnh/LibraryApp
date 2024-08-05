@@ -4,7 +4,6 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import com.example.libraryapp.navigation.NavigationAppBar
 import com.example.libraryapp.navigation.NavigationGraph
 import com.example.libraryapp.ui.theme.LibraryAppTheme
 import com.google.firebase.Firebase
@@ -25,19 +24,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             LibraryAppTheme {
-                NavigationGraph()
-            }
-        }
-    }
-
-    override fun onStart() {
-        super.onStart()
-        val currentUser = auth.currentUser
-        if (currentUser != null) {
-            setContent {
-                LibraryAppTheme {
-                    NavigationAppBar()
-                }
+                NavigationGraph(auth = auth)
             }
         }
     }

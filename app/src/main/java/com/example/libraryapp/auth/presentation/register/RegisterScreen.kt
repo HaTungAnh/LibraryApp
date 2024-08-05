@@ -212,7 +212,7 @@ fun RegisterScreen(
                         viewModel.registerUser(email, password)
                     }
                     Toast.makeText(context, "Register Successful", Toast.LENGTH_LONG).show()
-                    navController.navigate("NavigationAppBar")
+                    navController.navigate("HomeScreen")
                 }
             },
             modifier = Modifier
