@@ -147,7 +147,11 @@ fun LoginScreen(
                 scope.launch {
                     viewModel.loginUser(email, password)
                 }
-                navController.navigate("HomeScreen")
+                if (email == "librarian@gmail.com" && password == "123456") {
+                    navController.navigate("RequestScreen")
+                } else {
+                    navController.navigate("HomeScreen")
+                }
             },
             modifier = Modifier
                 .fillMaxWidth()
