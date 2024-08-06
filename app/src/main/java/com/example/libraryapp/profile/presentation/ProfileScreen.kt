@@ -22,7 +22,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,7 +34,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import androidx.navigation.NavHostController
 import androidx.navigation.compose.rememberNavController
 import com.example.libraryapp.auth.viewmodel.login.LoginViewModel
 import com.example.libraryapp.ui.theme.lightOrangeColor
@@ -60,44 +58,17 @@ fun ProfileScreen(
             .padding(paddingValues),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Box(
+        Spacer(modifier = Modifier.height(32.dp))
+
+        // TODO: Load Avatar
+        Image(
+            imageVector = Icons.Default.AccountCircle,
+            contentDescription = "Avatar",
+            contentScale = ContentScale.Crop,
             modifier = Modifier
-                .align(Alignment.CenterHorizontally)
-                .padding(top = 50.dp)
-        ) {
-            // TODO: Load Avatar
-            Image(
-                imageVector = Icons.Default.AccountCircle,
-                contentDescription = "Avatar",
-                contentScale = ContentScale.Crop,
-                modifier = Modifier
-                    .size(120.dp)
-                    .clip(CircleShape)
-            )
-
-            Box(
-                modifier = Modifier
-                    .align(Alignment.BottomEnd)
-                    .padding(end = 15.dp)
-            ) {
-                Box(
-                    modifier = Modifier
-                        .size(size = 30.dp)
-                        .clip(shape = CircleShape)
-                        .background(color = Color.White)
-
-                ) {
-                    IconButton(onClick = {
-                        // TODO: Choose Avatar
-                    }) {
-                        Icon(
-                            imageVector = Icons.Outlined.Edit,
-                            contentDescription = "Edit Avatar"
-                        )
-                    }
-                }
-            }
-        }
+                .size(120.dp)
+                .clip(CircleShape)
+        )
 
         // TODO: User Name
         Text(
@@ -222,33 +193,5 @@ fun ProfileScreen(
                 color = redOrangeColor
             )
         }
-    }
-}
-
-@Composable
-fun Button(
-    destination: String,
-    title: String,
-    navController: NavController = rememberNavController(),
-    color: Color = Color.Black
-) {
-    OutlinedButton(
-        onClick = {
-            navController.navigate(destination)
-        },
-        modifier = Modifier
-            .fillMaxWidth()
-            .height(50.dp)
-            .padding(start = 16.dp, end = 16.dp),
-        shape = RoundedCornerShape(15.dp),
-        border = BorderStroke(1.dp, color = color)
-    ) {
-        Text(
-            text = title,
-            fontFamily = montserratFontFamily,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 20.sp,
-            color = color
-        )
     }
 }

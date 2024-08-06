@@ -147,7 +147,6 @@ fun LoginScreen(
                 scope.launch {
                     viewModel.loginUser(email, password)
                 }
-                Toast.makeText(context, "Login Successful", Toast.LENGTH_LONG).show()
                 navController.navigate("HomeScreen")
             },
             modifier = Modifier

@@ -33,6 +33,7 @@ import androidx.navigation.compose.rememberNavController
 import com.example.libraryapp.auth.presentation.login.LoginScreen
 import com.example.libraryapp.auth.presentation.register.RegisterScreen
 import com.example.libraryapp.profile.presentation.ProfileScreen
+import com.example.libraryapp.profile.presentation.UpdateUserInfoScreen
 import com.example.libraryapp.ui.theme.lightOrangeColor
 import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor
@@ -501,6 +502,9 @@ fun NavigationGraph(
             ) { innerPadding ->
                 ProfileScreen(navController = navController, paddingValues = innerPadding)
             }
+        }
+        composable(route = Screens.UpdateUserInfoScreen.route) {
+            UpdateUserInfoScreen(navController = navController)
         }
     }
 }
