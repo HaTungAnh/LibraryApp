@@ -715,7 +715,7 @@ fun NavigationGraph(
                     }
                 }
             ) { innerPadding ->
-                AddBookScreen(paddingValues = innerPadding)
+                AddBookScreen(paddingValues = innerPadding, navController = navController)
             }
         }
     }
