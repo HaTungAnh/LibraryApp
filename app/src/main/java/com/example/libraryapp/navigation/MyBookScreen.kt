@@ -15,7 +15,7 @@ fun MyBookScreen(
 ) {
 
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxSize()
             .padding(paddingValues)
     ) {
