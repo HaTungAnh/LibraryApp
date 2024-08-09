@@ -19,7 +19,6 @@ class LoginViewModel @Inject constructor(
     val loginState = _loginState.receiveAsFlow()
 
     private val _logoutState = Channel<LogoutState>()
-    val logoutState = _logoutState.receiveAsFlow()
 
     fun loginUser(email: String, password: String) = viewModelScope.launch {
         repository.loginUser(email, password).collect{ result ->
