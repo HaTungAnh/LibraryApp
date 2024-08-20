@@ -6,8 +6,10 @@ import android.content.ContentValues
 import android.graphics.Bitmap
 import android.graphics.Matrix
 import android.net.Uri
+import android.os.Build
 import android.os.Environment
 import android.provider.MediaStore
+import androidx.annotation.RequiresApi
 import androidx.camera.core.ImageCapture
 import androidx.camera.core.ImageProxy
 import androidx.camera.view.LifecycleCameraController
@@ -28,6 +30,7 @@ class CameraRepositoryImpl @Inject constructor(
         controller.takePicture(
             ContextCompat.getMainExecutor(application),
             object : ImageCapture.OnImageCapturedCallback() {
+                @RequiresApi(Build.VERSION_CODES.Q)
                 override fun onCaptureSuccess(image: ImageProxy) {
                     super.onCaptureSuccess(image)
 
@@ -52,6 +55,7 @@ class CameraRepositoryImpl @Inject constructor(
         )
     }
 
+    @RequiresApi(Build.VERSION_CODES.Q)
     private suspend fun savePhoto(bitmap: Bitmap) {
         withContext(Dispatchers.IO) {
             val resolver: ContentResolver = application.contentResolver
