@@ -1,5 +1,6 @@
 package com.example.libraryapp.navigation
 
+import android.app.Activity
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -30,6 +31,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -39,9 +41,10 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.libraryapp.addbooks.presentation.AddBookScreen
+import com.example.libraryapp.addbooks.presentation.CameraScreen
 import com.example.libraryapp.auth.presentation.login.LoginScreen
 import com.example.libraryapp.auth.presentation.register.RegisterScreen
-import com.example.libraryapp.auth.viewmodel.login.LoginViewModel
+import com.example.libraryapp.auth.presentation.login.LoginViewModel
 import com.example.libraryapp.profile.presentation.ProfileScreen
 import com.example.libraryapp.profile.presentation.UpdateUserInfoScreen
 import com.example.libraryapp.request.presentation.RequestScreen
@@ -56,7 +59,8 @@ import kotlinx.coroutines.launch
 fun NavigationGraph(
     navController: NavHostController = rememberNavController(),
     auth: FirebaseAuth,
-    loginViewModel: LoginViewModel = hiltViewModel()
+    loginViewModel: LoginViewModel = hiltViewModel(),
+    activity: Activity
 ) {
 
     val scope = rememberCoroutineScope()
@@ -712,8 +716,15 @@ fun NavigationGraph(
                     }
                 }
             ) { innerPadding ->
-                AddBookScreen(paddingValues = innerPadding, navController = navController)
+                AddBookScreen(
+                    paddingValues = innerPadding,
+                    navController = navController,
+                    activity = activity
+                )
             }
+        }
+        composable(route = Screens.CameraScreen.route) {
+            CameraScreen(activity = activity)
         }
     }
 }

@@ -1,6 +1,6 @@
 package com.example.libraryapp.auth.data
 
-import com.example.libraryapp.auth.viewmodel.AuthRepository
+import com.example.libraryapp.auth.domain.AuthRepository
 import com.example.libraryapp.util.Resource
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth

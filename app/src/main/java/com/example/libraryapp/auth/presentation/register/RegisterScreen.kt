@@ -48,7 +48,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.example.libraryapp.auth.viewmodel.register.RegisterViewModel
 import com.example.libraryapp.ui.theme.lightOrangeColor
 import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor

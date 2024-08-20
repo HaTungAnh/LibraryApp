@@ -1,4 +1,4 @@
-package com.example.libraryapp.profile.viewmodel
+package com.example.libraryapp.profile.presentation
 
 data class ProfileState(
 

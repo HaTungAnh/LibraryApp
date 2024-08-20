@@ -1,4 +1,4 @@
-package com.example.libraryapp.auth.viewmodel
+package com.example.libraryapp.auth.domain
 
 import com.example.libraryapp.util.Resource
 import com.google.firebase.auth.AuthResult

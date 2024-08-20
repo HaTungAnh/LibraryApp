@@ -1,5 +1,9 @@
 package com.example.libraryapp.addbooks.presentation
 
+import android.Manifest
+import android.app.Activity
+import android.content.Context
+import android.content.pm.PackageManager
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -17,12 +21,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.example.libraryapp.MainActivity
 import com.example.libraryapp.ui.theme.montserratFontFamily
 import com.example.libraryapp.ui.theme.redOrangeColor
 
@@ -30,7 +38,8 @@ import com.example.libraryapp.ui.theme.redOrangeColor
 fun AddBookScreen(
     modifier: Modifier = Modifier,
     paddingValues: PaddingValues,
-    navController: NavController
+    navController: NavController,
+    activity: Activity
 ) {
     Column(
         modifier = modifier
@@ -41,12 +50,17 @@ fun AddBookScreen(
         verticalArrangement = Arrangement.spacedBy(16.dp)
     ) {
 
+        val context = LocalContext.current
+
         Spacer(modifier = Modifier.height(32.dp))
 
-        // TODO: Navigate to AddBookScreen
         OutlinedButton(
             onClick = {
-
+                if (grantedCameraPermission(context)) {
+                    navController.navigate("CameraScreen")
+                } else {
+                    requestCameraPermission(activity)
+                }
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -66,11 +80,27 @@ fun AddBookScreen(
     }
 }
 
+private fun grantedCameraPermission(context: Context): Boolean {
+    return ContextCompat.checkSelfPermission(
+        context,
+        Manifest.permission.CAMERA
+    ) == PackageManager.PERMISSION_GRANTED
+}
+
+private fun requestCameraPermission(activity: Activity) {
+    ActivityCompat.requestPermissions(
+        activity,
+        arrayOf(Manifest.permission.CAMERA),
+        0
+    )
+}
+
 @Preview
 @Composable
 private fun PreviewAddBookScreen() {
     AddBookScreen(
         paddingValues = PaddingValues(16.dp),
-        navController = rememberNavController()
+        navController = rememberNavController(),
+        activity = MainActivity()
     )
 }

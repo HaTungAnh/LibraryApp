@@ -1,6 +1,6 @@
-package com.example.libraryapp.auth.viewmodel.login
+package com.example.libraryapp.auth.presentation.login
 
-data class LoginState(
+data class LogoutState(
 
     val isLoading: Boolean = false,
     val isSuccess: String? = "",

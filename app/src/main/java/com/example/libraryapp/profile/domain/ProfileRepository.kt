@@ -1,4 +1,4 @@
-package com.example.libraryapp.profile.viewmodel
+package com.example.libraryapp.profile.domain
 
 import com.example.libraryapp.util.Resource
 import com.google.firebase.auth.UserInfo

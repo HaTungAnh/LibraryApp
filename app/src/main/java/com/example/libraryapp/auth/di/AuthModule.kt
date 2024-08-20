@@ -1,6 +1,6 @@
 package com.example.libraryapp.auth.di
 
-import com.example.libraryapp.auth.viewmodel.AuthRepository
+import com.example.libraryapp.auth.domain.AuthRepository
 import com.example.libraryapp.auth.data.AuthRepositoryImpl
 import com.google.firebase.auth.FirebaseAuth
 import dagger.Module

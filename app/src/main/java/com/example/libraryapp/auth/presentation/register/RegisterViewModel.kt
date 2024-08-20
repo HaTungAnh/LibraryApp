@@ -1,8 +1,8 @@
-package com.example.libraryapp.auth.viewmodel.register
+package com.example.libraryapp.auth.presentation.register
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.libraryapp.auth.viewmodel.AuthRepository
+import com.example.libraryapp.auth.domain.AuthRepository
 import com.example.libraryapp.util.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel

@@ -24,7 +24,10 @@ class MainActivity : ComponentActivity() {
 
         setContent {
             LibraryAppTheme {
-                NavigationGraph(auth = auth)
+                NavigationGraph(
+                    auth = auth,
+                    activity = this
+                )
             }
         }
     }

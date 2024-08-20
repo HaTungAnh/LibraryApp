@@ -2,7 +2,7 @@ package com.example.libraryapp.profile.data
 
 import android.util.Log
 import com.example.libraryapp.util.Resource
-import com.example.libraryapp.profile.viewmodel.ProfileRepository
+import com.example.libraryapp.profile.domain.ProfileRepository
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserInfo
 import com.google.firebase.database.DatabaseReference
