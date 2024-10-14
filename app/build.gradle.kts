@@ -88,6 +88,12 @@ dependencies {
     implementation(libs.androidx.camera.video)
     implementation(libs.androidx.camera.view)
     implementation(libs.androidx.camera.extensions)
+
+    // ML Kit
+    implementation (libs.text.recognition)
+    implementation (libs.text.recognition.chinese)
+    implementation (libs.play.services.mlkit.text.recognition)
+    implementation (libs.play.services.mlkit.text.recognition.chinese)
 }
 
 // Allow references to generated code
